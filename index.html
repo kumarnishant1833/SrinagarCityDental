@@ -407,6 +407,30 @@
     .patient-text { font-size: 0.82rem; }
     .patient-count { font-weight: 700; color: var(--clr-primary); }
 
+    /* ===== TRUST BADGES (Hero) ===== */
+    .trust-badges {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      margin-bottom: 36px;
+    }
+    .trust-badge {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--clr-white);
+      border: 1px solid rgba(22,58,99,0.1);
+      border-radius: var(--radius-sm);
+      padding: 10px 16px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .trust-badge:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .trust-badge-icon {
+      width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0;
+      background: rgba(193,137,63,0.14);
+      display: flex; align-items: center; justify-content: center; font-size: 1.05rem;
+    }
+    .trust-badge-text { line-height: 1.25; }
+    .trust-badge-title { font-size: 0.78rem; font-weight: 700; color: var(--clr-dark); }
+    .trust-badge-sub { font-size: 0.68rem; color: var(--clr-text-muted); letter-spacing: 0.02em; }
+
     /* ===== ABOUT ===== */
     #about { background: var(--clr-white); }
     .about-grid {
@@ -552,6 +576,59 @@
       color: var(--clr-white); margin-bottom: 8px;
     }
     .why-desc { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+
+    /* ===== TEAM ===== */
+    #team { background: var(--clr-white); }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px; margin-top: 56px;
+    }
+    .team-card {
+      background: var(--clr-bg2);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid rgba(22,58,99,0.07);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      text-align: center;
+    }
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(193,137,63,0.28);
+    }
+    .team-img-wrap {
+      width: 104px; height: 104px; margin: 32px auto 0;
+      border-radius: 50%; overflow: hidden;
+      border: 3px solid var(--clr-white);
+      box-shadow: var(--shadow-sm);
+      background: var(--clr-bg2);
+      flex-shrink: 0;
+    }
+    .team-img-wrap img,
+    .team-img-wrap svg {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.5s ease;
+    }
+    .team-card:hover .team-img-wrap img,
+    .team-card:hover .team-img-wrap svg { transform: scale(1.05); }
+    .team-body { padding: 18px 20px 28px; }
+    .team-name {
+      font-family: var(--font-display); font-size: 1.7rem; font-weight: 700;
+      color: var(--clr-dark); margin-bottom: 6px; line-height: 1.15;
+    }
+    .team-qual {
+      font-size: 0.92rem; font-weight: 700; letter-spacing: 0.04em;
+      color: var(--clr-primary); margin-bottom: 12px;
+    }
+    .team-specialty {
+      display: inline-block; background: var(--clr-white);
+      color: var(--clr-text-muted); font-size: 0.8rem;
+      padding: 6px 14px; border-radius: 99px;
+      border: 1px solid rgba(22,58,99,0.12); margin-bottom: 8px;
+    }
+    .team-exp { font-size: 0.76rem; color: var(--clr-text-muted); }
 
     /* ===== GALLERY ===== */
     #gallery { background: var(--clr-bg2); }
@@ -965,10 +1042,11 @@
       <li role="none"><a href="#home" role="menuitem">Home</a></li>
       <li role="none"><a href="#about" role="menuitem">About</a></li>
       <li role="none"><a href="#services" role="menuitem">Services</a></li>
-      <li role="none"><a href="#why" role="menuitem">Why Us</a></li>
+      <li role="none"><a href="#team" role="menuitem">Team</a></li>
       <li role="none"><a href="#gallery" role="menuitem">Gallery</a></li>
       <li role="none"><a href="#before-after" role="menuitem">Before &amp; After</a></li>
       <li role="none"><a href="#testimonials" role="menuitem">Video Stories</a></li>
+      <li role="none"><a href="#why" role="menuitem">Why Us</a></li>
       <li role="none"><a href="#faq" role="menuitem">FAQ</a></li>
       <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
     </ul>
@@ -989,10 +1067,11 @@
   <a href="#home" role="menuitem">🏠 Home</a>
   <a href="#about" role="menuitem">👩‍⚕️ About</a>
   <a href="#services" role="menuitem">🦷 Services</a>
-  <a href="#why" role="menuitem">⭐ Why Us</a>
+  <a href="#team" role="menuitem">👥 Team</a>
   <a href="#gallery" role="menuitem">🖼️ Gallery</a>
   <a href="#before-after" role="menuitem">↔️ Before &amp; After</a>
   <a href="#testimonials" role="menuitem">🎬 Video Stories</a>
+  <a href="#why" role="menuitem">⭐ Why Us</a>
   <a href="#faq" role="menuitem">❓ FAQ</a>
   <a href="#contact" role="menuitem">📍 Contact</a>
   <a href="#appointment" class="btn btn-primary">📅 Book Appointment</a>
@@ -1013,6 +1092,38 @@
         <p class="hero-desc">
           Specialist orthodontic care by Dr. Nasir — BDS, MDS (Orthodontics) combining precise treatment planning with a gentle, patient-first approach. Proudly serving Srinagar on Dal Lake Road.
         </p>
+
+        <div class="trust-badges" role="list" aria-label="Recognitions and credentials">
+          <div class="trust-badge" role="listitem">
+            <div class="trust-badge-icon">🏅</div>
+            <div class="trust-badge-text">
+              <div class="trust-badge-title">Recognised Provider</div>
+              <div class="trust-badge-sub">Aligners &amp; Braces</div>
+            </div>
+          </div>
+          <div class="trust-badge" role="listitem">
+            <div class="trust-badge-icon">🇸🇦</div>
+            <div class="trust-badge-text">
+              <div class="trust-badge-title">Recognised by Saudi Arabia</div>
+              <div class="trust-badge-sub">International Standing</div>
+            </div>
+          </div>
+          <div class="trust-badge" role="listitem">
+            <div class="trust-badge-icon">🎖️</div>
+            <div class="trust-badge-text">
+              <div class="trust-badge-title">Indian Orthodontic Society</div>
+              <div class="trust-badge-sub">Recognised Member</div>
+            </div>
+          </div>
+          <div class="trust-badge" role="listitem">
+            <div class="trust-badge-icon">⏳</div>
+            <div class="trust-badge-text">
+              <div class="trust-badge-title">Over a Decade</div>
+              <div class="trust-badge-sub">of Experience</div>
+            </div>
+          </div>
+        </div>
+
         <div class="hero-btns">
           <a href="#appointment" class="btn btn-primary">📅 Book Appointment</a>
           <a href="https://wa.me/917780812225" class="btn btn-wa" target="_blank" rel="noopener">💬 WhatsApp Us</a>
@@ -1273,50 +1384,59 @@
   </div>
 </section>
 
-<!-- ===== WHY CHOOSE US ===== -->
-<section id="why" class="section" aria-label="Why Choose Srinagar City Dental Center">
+<!-- ===== TEAM ===== -->
+<section id="team" class="section" aria-label="Meet Our Team">
   <div class="container">
     <div class="text-center reveal">
-      <span class="section-label">Why Choose Us</span>
-      <h2 class="section-title">The Srinagar City Dental<br>Difference</h2>
-      <p class="section-desc">We don't just straighten teeth — we build lasting relationships based on trust, transparency, and exceptional care.</p>
+      <span class="section-label">Our Team</span>
+      <h2 class="section-title">Meet Our Dental<br>Specialists</h2>
+      <p class="section-desc">A trusted team of specialists working alongside Dr. Nasir to give you complete, well-rounded dental care.</p>
     </div>
 
-    <div class="why-grid">
-      <div class="why-card reveal">
-        <div class="why-icon">👩‍⚕️</div>
-        <div class="why-title">Specialist Orthodontist</div>
-        <div class="why-desc">Dr. Nasir holds a BDS and MDS in Orthodontics, ensuring you receive specialist-level diagnosis and treatment planning at every visit.</div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-img-wrap" role="img" aria-label="Dr. Samah — Oral & Maxillofacial Surgeon avatar">
+          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="60" fill="#eef1f6"/>
+            <path d="M60 18c-22 0-34 16-34 36 0 12 3 20 7 28 3-2 6-6 6-14 0-16 9-26 21-26s21 10 21 26c0 8 3 12 6 14 4-8 7-16 7-28 0-20-12-36-34-36Z" fill="#163a63"/>
+            <circle cx="60" cy="58" r="19" fill="#f4e9d6"/>
+            <path d="M41 54c0-13 9-21 19-21s19 8 19 21c0 3-1 5-1 5s-3-9-8-11c-4 5-19 5-23 0-5 2-8 11-8 11s-1-2-1-5Z" fill="#163a63"/>
+            <path d="M60 100c-14 0-25 6-28 14 8 4 18 6 28 6s20-2 28-6c-3-8-14-14-28-14Z" fill="#c1893f"/>
+          </svg>
+        </div>
+        <div class="team-body">
+          <div class="team-name">Dr. Samah</div>
+          <div class="team-qual">BDS, MDS</div>
+          <div class="team-specialty">Oral &amp; Maxillofacial Surgeon</div>
+          <div class="team-exp">11 Years Experience</div>
+        </div>
       </div>
-      <div class="why-card reveal reveal-delay-1">
-        <div class="why-icon">🛡️</div>
-        <div class="why-title">Sterilized Equipment</div>
-        <div class="why-desc">All instruments are autoclaved and sterilized using international protocols. Your safety is our highest priority, every single visit.</div>
+
+      <div class="team-card reveal reveal-delay-1">
+        <div class="team-img-wrap">
+          <img src="team-dr-shabaz.jpg" alt="Dr. Shabaz — RCT Specialist" loading="lazy" width="480" height="600" />
+        </div>
+        <div class="team-body">
+          <div class="team-name">Dr. Shabaz</div>
+          <div class="team-qual">BDS</div>
+          <div class="team-specialty">RCT Specialist</div>
+        </div>
       </div>
-      <div class="why-card reveal reveal-delay-2">
-        <div class="why-icon">💊</div>
-        <div class="why-title">Painless Treatment</div>
-        <div class="why-desc">We use modern bonding techniques and gentle adjustment methods to keep every orthodontic visit as comfortable as possible.</div>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-icon">💰</div>
-        <div class="why-title">Affordable Care</div>
-        <div class="why-desc">Specialist orthodontic care shouldn't cost a fortune. We offer transparent pricing, treatment plans, and easy payment options to suit every budget.</div>
-      </div>
-      <div class="why-card reveal reveal-delay-1">
-        <div class="why-icon">🔬</div>
-        <div class="why-title">Modern Technology</div>
-        <div class="why-desc">From digital X-rays to precise bracket placement — our clinic is equipped with advanced tools that make treatment faster and more accurate.</div>
-      </div>
-      <div class="why-card reveal reveal-delay-2">
-        <div class="why-icon">🚨</div>
-        <div class="why-title">Emergency Support</div>
-        <div class="why-desc">A loose bracket or broken wire doesn't wait. Contact us via WhatsApp for urgent cases and we'll get you seen as quickly as possible during clinic hours.</div>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-icon">🌿</div>
-        <div class="why-title">Friendly Environment</div>
-        <div class="why-desc">Our clinic is designed to feel calm, clean, and welcoming — reducing anxiety for patients of all ages, especially teens starting treatment.</div>
+
+      <div class="team-card reveal reveal-delay-2">
+        <div class="team-img-wrap" role="img" aria-label="Dr. Iram — General Dentist avatar">
+          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="60" fill="#eef1f6"/>
+            <path d="M60 18c-22 0-34 16-34 36 0 12 3 20 7 28 3-2 6-6 6-14 0-16 9-26 21-26s21 10 21 26c0 8 3 12 6 14 4-8 7-16 7-28 0-20-12-36-34-36Z" fill="#c1893f"/>
+            <circle cx="60" cy="58" r="19" fill="#f4e9d6"/>
+            <path d="M41 54c0-13 9-21 19-21s19 8 19 21c0 3-1 5-1 5s-3-9-8-11c-4 5-19 5-23 0-5 2-8 11-8 11s-1-2-1-5Z" fill="#c1893f"/>
+            <path d="M60 100c-14 0-25 6-28 14 8 4 18 6 28 6s20-2 28-6c-3-8-14-14-28-14Z" fill="#163a63"/>
+          </svg>
+        </div>
+        <div class="team-body">
+          <div class="team-name">Dr. Iram</div>
+          <div class="team-specialty">General Dentist</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1502,6 +1622,55 @@
     </div>
   </div>
 </section>
+<!-- ===== WHY CHOOSE US ===== -->
+<section id="why" class="section" aria-label="Why Choose Srinagar City Dental Center">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label">Why Choose Us</span>
+      <h2 class="section-title">The Srinagar City Dental<br>Difference</h2>
+      <p class="section-desc">We don't just straighten teeth — we build lasting relationships based on trust, transparency, and exceptional care.</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">👩‍⚕️</div>
+        <div class="why-title">Specialist Orthodontist</div>
+        <div class="why-desc">Dr. Nasir holds a BDS and MDS in Orthodontics, ensuring you receive specialist-level diagnosis and treatment planning at every visit.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon">🛡️</div>
+        <div class="why-title">Sterilized Equipment</div>
+        <div class="why-desc">All instruments are autoclaved and sterilized using international protocols. Your safety is our highest priority, every single visit.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon">💊</div>
+        <div class="why-title">Painless Treatment</div>
+        <div class="why-desc">We use modern bonding techniques and gentle adjustment methods to keep every orthodontic visit as comfortable as possible.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">💰</div>
+        <div class="why-title">Affordable Care</div>
+        <div class="why-desc">Specialist orthodontic care shouldn't cost a fortune. We offer transparent pricing, treatment plans, and easy payment options to suit every budget.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon">🔬</div>
+        <div class="why-title">Modern Technology</div>
+        <div class="why-desc">From digital X-rays to precise bracket placement — our clinic is equipped with advanced tools that make treatment faster and more accurate.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon">🚨</div>
+        <div class="why-title">Emergency Support</div>
+        <div class="why-desc">A loose bracket or broken wire doesn't wait. Contact us via WhatsApp for urgent cases and we'll get you seen as quickly as possible during clinic hours.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🌿</div>
+        <div class="why-title">Friendly Environment</div>
+        <div class="why-desc">Our clinic is designed to feel calm, clean, and welcoming — reducing anxiety for patients of all ages, especially teens starting treatment.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== FAQ ===== -->
 <section id="faq" class="section" aria-label="Frequently Asked Questions">
   <div class="container">
@@ -1802,10 +1971,11 @@
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About Doctor</a></li>
           <li><a href="#services">Our Services</a></li>
-          <li><a href="#why">Why Choose Us</a></li>
+          <li><a href="#team">Our Team</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#before-after">Before &amp; After</a></li>
           <li><a href="#testimonials">Video Stories</a></li>
+          <li><a href="#why">Why Choose Us</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#appointment">Book Appointment</a></li>
         </ul>
@@ -2018,6 +2188,11 @@ SERVICES SECTION
   service-orthodontic-treatment.jpg 800 × 450 Orthodontic Treatment — bite/jaw assessment
   service-retainers.jpg           800 × 450   Retainers on display or being fitted
   service-consultation.jpg        800 × 450   Consultation — doctor reviewing digital scan with patient
+
+TEAM SECTION
+  Dr. Samah  — uses an inline SVG hijab avatar (no image file needed)
+  team-dr-shabaz.jpg   480 × 600   Dr. Shabaz — doctor photo (RCT Specialist)
+  Dr. Iram   — uses an inline SVG hijab avatar (no image file needed)
 
 GALLERY SECTION
   gallery-clinic-reception.jpg  1200 × 800   Clinic reception area — warm, modern
