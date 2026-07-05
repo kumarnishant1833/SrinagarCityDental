@@ -479,6 +479,13 @@
     }
     .about-feat-text { font-size: 0.85rem; font-weight: 600; color: var(--clr-dark); }
     .about-feat-sub { font-size: 0.75rem; color: var(--clr-text-muted); }
+    /* Additive helpers for multi-doctor About section — reuses existing about-grid design */
+    .about-grid-reverse .about-img-wrap { order: 2; }
+    .about-grid-reverse .about-content { order: 1; }
+    @media (max-width: 768px) {
+      .about-grid-reverse .about-img-wrap { order: 0; }
+      .about-grid-reverse .about-content { order: 0; }
+    }
 
     /* ===== SERVICES ===== */
     #services { background: var(--clr-bg); }
@@ -576,59 +583,6 @@
       color: var(--clr-white); margin-bottom: 8px;
     }
     .why-desc { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
-
-    /* ===== TEAM ===== */
-    #team { background: var(--clr-white); }
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 28px; margin-top: 56px;
-    }
-    .team-card {
-      background: var(--clr-bg2);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid rgba(22,58,99,0.07);
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-      text-align: center;
-    }
-    .team-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-md);
-      border-color: rgba(193,137,63,0.28);
-    }
-    .team-img-wrap {
-      width: 104px; height: 104px; margin: 32px auto 0;
-      border-radius: 50%; overflow: hidden;
-      border: 3px solid var(--clr-white);
-      box-shadow: var(--shadow-sm);
-      background: var(--clr-bg2);
-      flex-shrink: 0;
-    }
-    .team-img-wrap img,
-    .team-img-wrap svg {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform 0.5s ease;
-    }
-    .team-card:hover .team-img-wrap img,
-    .team-card:hover .team-img-wrap svg { transform: scale(1.05); }
-    .team-body { padding: 18px 20px 28px; }
-    .team-name {
-      font-family: var(--font-display); font-size: 1.7rem; font-weight: 700;
-      color: var(--clr-dark); margin-bottom: 6px; line-height: 1.15;
-    }
-    .team-qual {
-      font-size: 0.92rem; font-weight: 700; letter-spacing: 0.04em;
-      color: var(--clr-primary); margin-bottom: 12px;
-    }
-    .team-specialty {
-      display: inline-block; background: var(--clr-white);
-      color: var(--clr-text-muted); font-size: 0.8rem;
-      padding: 6px 14px; border-radius: 99px;
-      border: 1px solid rgba(22,58,99,0.12); margin-bottom: 8px;
-    }
-    .team-exp { font-size: 0.76rem; color: var(--clr-text-muted); }
 
     /* ===== GALLERY ===== */
     #gallery { background: var(--clr-bg2); }
@@ -967,6 +921,27 @@
       50% { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
     }
 
+    /* ===== FLOATING BOOK APPOINTMENT BUTTON ===== */
+    .floating-book-btn {
+      position: fixed; bottom: 24px; left: 24px; z-index: 900;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--clr-primary); color: var(--clr-white);
+      padding: 14px 22px; border-radius: 99px;
+      font-weight: 600; font-size: 0.85rem;
+      box-shadow: 0 10px 30px rgba(22,58,99,0.32);
+      transition: var(--transition);
+      animation: floatBookIn 0.6s ease 0.8s both;
+    }
+    .floating-book-btn:hover {
+      background: var(--clr-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 38px rgba(22,58,99,0.42);
+    }
+    @keyframes floatBookIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
       .footer-main { grid-template-columns: 1fr 1fr; gap: 36px; }
@@ -992,6 +967,8 @@
       .footer-main { grid-template-columns: 1fr; }
       .video-grid { grid-template-columns: 1fr 1fr; }
       .footer-bottom { flex-direction: column; text-align: center; }
+      .floating-book-btn { padding: 12px; bottom: 16px; left: 16px; font-size: 0.8rem; border-radius: 50%; }
+      .floating-book-text { display: none; }
     }
   </style>
 </head>
@@ -1020,6 +997,12 @@
   💬
 </a>
 
+<!-- ===== STICKY BOOK APPOINTMENT ===== -->
+<a href="#appointment" class="floating-book-btn" aria-label="Book an Appointment">
+  <span class="floating-book-icon">📅</span>
+  <span class="floating-book-text">Book Appointment</span>
+</a>
+
 <!-- ===== SCROLL TOP ===== -->
 <button id="scrollTop" aria-label="Scroll to top">↑</button>
 
@@ -1042,7 +1025,6 @@
       <li role="none"><a href="#home" role="menuitem">Home</a></li>
       <li role="none"><a href="#about" role="menuitem">About</a></li>
       <li role="none"><a href="#services" role="menuitem">Services</a></li>
-      <li role="none"><a href="#team" role="menuitem">Team</a></li>
       <li role="none"><a href="#gallery" role="menuitem">Gallery</a></li>
       <li role="none"><a href="#before-after" role="menuitem">Before &amp; After</a></li>
       <li role="none"><a href="#testimonials" role="menuitem">Video Stories</a></li>
@@ -1067,7 +1049,6 @@
   <a href="#home" role="menuitem">🏠 Home</a>
   <a href="#about" role="menuitem">👩‍⚕️ About</a>
   <a href="#services" role="menuitem">🦷 Services</a>
-  <a href="#team" role="menuitem">👥 Team</a>
   <a href="#gallery" role="menuitem">🖼️ Gallery</a>
   <a href="#before-after" role="menuitem">↔️ Before &amp; After</a>
   <a href="#testimonials" role="menuitem">🎬 Video Stories</a>
@@ -1087,10 +1068,10 @@
           Now Accepting New Patients
         </div>
         <h1 class="hero-title">
-          Your Perfectly <em>Aligned</em><br>Smile Starts Here
+          Complete Dental Care with <em>Advanced Orthodontic Expertise</em>
         </h1>
         <p class="hero-desc">
-          Specialist orthodontic care by Dr. Nasir — BDS, MDS (Orthodontics) combining precise treatment planning with a gentle, patient-first approach. Proudly serving Srinagar on Dal Lake Road.
+          From routine check-ups, root canals and implants to teeth whitening and kids' dentistry — Srinagar City Dental Center is your family's complete dental home. Led by Dr. Nasir, BDS, MDS (Orthodontics), and supported by a team of experienced specialists, we're proudly serving Srinagar on Dal Lake Road.
         </p>
 
         <div class="trust-badges" role="list" aria-label="Recognitions and credentials">
@@ -1132,7 +1113,7 @@
           <div class="hero-stat">
             <!-- Placeholder figure — replace with the clinic's real patient count -->
             <div class="hero-stat-num">1200+</div>
-            <div class="hero-stat-label">Smiles Aligned</div>
+            <div class="hero-stat-label">Happy Patients</div>
           </div>
           <div class="hero-stat">
             <!-- Placeholder figure — replace with Dr. Nasir's real years of practice -->
@@ -1140,8 +1121,8 @@
             <div class="hero-stat-label">Years Experience</div>
           </div>
           <div class="hero-stat">
-            <div class="hero-stat-num">6</div>
-            <div class="hero-stat-label">Ortho Treatments</div>
+            <div class="hero-stat-num">10+</div>
+            <div class="hero-stat-label">Dental Treatments</div>
           </div>
           <div class="hero-stat">
             <div class="hero-stat-num">99%</div>
@@ -1163,8 +1144,8 @@
         <div class="hero-float-card">
           <div class="float-icon teal">🦷</div>
           <div>
-            <div class="float-label">Specialist In</div>
-            <div class="float-value">Orthodontics</div>
+            <div class="float-label">Complete Care</div>
+            <div class="float-value">All Dental Needs</div>
           </div>
         </div>
 
@@ -1186,7 +1167,7 @@
               <img src="patient-avatar-3.jpg" alt="Patient" loading="lazy" width="32" height="32" />
             </div>
             <div class="patient-text">
-              <div><span class="patient-count">1200+</span> aligned smiles</div>
+              <div><span class="patient-count">1200+</span> happy smiles</div>
               <div style="color:#f4c430;font-size:0.7rem">★★★★★ 4.9 Rating</div>
             </div>
           </div>
@@ -1196,11 +1177,18 @@
   </div>
 </section>
 
-<!-- ===== ABOUT ===== -->
-<section id="about" class="section" aria-label="About Dr. Nasir">
+<!-- ===== ABOUT / DOCTORS ===== -->
+<section id="about" class="section" aria-label="Meet Our Doctors">
   <div class="container">
-    <div class="about-grid">
-      <div class="about-img-wrap reveal">
+    <div class="text-center reveal">
+      <span class="section-label">About Us</span>
+      <h2 class="section-title">Meet the Doctors Behind<br>Your Smile</h2>
+      <p class="section-desc">Srinagar City Dental Center brings together a team of experienced specialists — led by Dr. Nasir — dedicated to complete, precise, and gentle dental care.</p>
+    </div>
+
+    <!-- Dr. Nasir — Lead Orthodontist -->
+    <div class="about-grid about-block reveal" style="margin-top:56px;">
+      <div class="about-img-wrap">
         <img
           src="doctor-portrait.jpg"
           alt="Dr. Nasir — BDS, MDS (Orthodontics)"
@@ -1212,44 +1200,44 @@
           <div class="about-cert-num">10+</div>
           <div class="about-cert-label">Years of Expert<br>Orthodontic Practice</div>
         </div>
-        <div class="about-qual-chip">BDS, MDS (Orthodontics)</div>
+        <div class="about-qual-chip" style="background:var(--clr-accent);">BDS, MDS (Orthodontics)</div>
       </div>
 
       <div class="about-content">
-        <span class="section-label reveal">About the Doctor</span>
-        <h2 class="section-title reveal reveal-delay-1">
-          Meet Dr. Nasir —<br>Your Orthodontic Expert
+        <span class="section-label" style="background:rgba(193,137,63,0.14); color:var(--clr-gold);">⭐ Lead Orthodontist</span>
+        <h2 class="section-title" style="font-size:clamp(2.1rem, 4.3vw, 3.15rem); color:var(--clr-gold);">
+          Dr. Nasir —<br>Your Orthodontic Expert
         </h2>
-        <p class="section-desc reveal reveal-delay-2">
+        <p class="section-desc">
           Dr. Nasir is a specialist Orthodontist holding a BDS and MDS in Orthodontics, dedicated exclusively to correcting bites, straightening teeth, and building lasting, confident smiles for patients of every age.
         </p>
-        <p class="section-desc reveal reveal-delay-2" style="margin-top:14px;">
-          At Srinagar City Dental Center, precise diagnostics meet a warm, patient-first approach. From first consultation to final retainer fitting, every step of your orthodontic journey is planned and monitored closely — conveniently located on Dal Lake Road, Srinagar.
+        <p class="section-desc" style="margin-top:14px;">
+          As the lead orthodontist at Srinagar City Dental Center, Dr. Nasir oversees every orthodontic case from first consultation to final retainer fitting — a Recognised Aligner &amp; Braces Provider with over a decade of experience.
         </p>
 
         <div class="about-features">
-          <div class="about-feat reveal reveal-delay-2">
-            <div class="about-feat-icon">🔬</div>
+          <div class="about-feat">
+            <div class="about-feat-icon">🦷</div>
             <div>
-              <div class="about-feat-text">Modern Equipment</div>
-              <div class="about-feat-sub">Digital X-Rays &amp; scanning</div>
+              <div class="about-feat-text">Orthodontist</div>
+              <div class="about-feat-sub">Braces &amp; Clear Aligner Specialist</div>
             </div>
           </div>
-          <div class="about-feat reveal reveal-delay-2">
-            <div class="about-feat-icon">🛡️</div>
+          <div class="about-feat">
+            <div class="about-feat-icon">🏅</div>
             <div>
-              <div class="about-feat-text">Sterilized Instruments</div>
-              <div class="about-feat-sub">100% safe protocols</div>
+              <div class="about-feat-text">Recognised Provider</div>
+              <div class="about-feat-sub">Aligners &amp; Braces</div>
             </div>
           </div>
-          <div class="about-feat reveal reveal-delay-3">
-            <div class="about-feat-icon">💊</div>
+          <div class="about-feat">
+            <div class="about-feat-icon">⏳</div>
             <div>
-              <div class="about-feat-text">Painless Treatment</div>
-              <div class="about-feat-sub">Comfortable experience</div>
+              <div class="about-feat-text">Over a Decade</div>
+              <div class="about-feat-sub">of Experience</div>
             </div>
           </div>
-          <div class="about-feat reveal reveal-delay-3">
+          <div class="about-feat">
             <div class="about-feat-icon">🧒</div>
             <div>
               <div class="about-feat-text">Teen &amp; Kid Friendly</div>
@@ -1258,11 +1246,143 @@
           </div>
         </div>
 
-        <div style="margin-top:28px;" class="reveal reveal-delay-4">
+        <div style="margin-top:28px;">
           <a href="tel:+917780812225" class="btn btn-primary">📞 +91 77808 12225</a>
         </div>
       </div>
     </div>
+
+    <!-- Dr. Samah — Oral & Maxillofacial Surgeon -->
+    <div class="about-grid about-block about-grid-reverse reveal" style="margin-top:96px;">
+      <div class="about-img-wrap">
+        <img
+          src="team-female-doctor.jpg"
+          alt="Dr. Samah — Oral & Maxillofacial Surgeon"
+          class="about-img-main"
+          loading="lazy"
+          width="480" height="640"
+        />
+        <div class="about-cert-card">
+          <div class="about-cert-num">7+</div>
+          <div class="about-cert-label">Years of Specialization<br>Experience</div>
+        </div>
+        <div class="about-qual-chip">BDS, MDS</div>
+      </div>
+
+      <div class="about-content">
+        <span class="section-label">Oral &amp; Maxillofacial Surgeon</span>
+        <h2 class="section-title" style="font-size:clamp(1.9rem, 3.8vw, 2.7rem);">
+          Dr. Samah
+        </h2>
+        <p class="section-desc">
+          Dr. Samah brings specialist surgical expertise in oral and maxillofacial care, handling complex extractions, jaw-related procedures, and surgical dental needs with precision and care.
+        </p>
+
+        <div class="about-features">
+          <div class="about-feat">
+            <div class="about-feat-icon">🎓</div>
+            <div>
+              <div class="about-feat-text">BDS, MDS</div>
+              <div class="about-feat-sub">Oral &amp; Maxillofacial Surgery</div>
+            </div>
+          </div>
+          <div class="about-feat">
+            <div class="about-feat-icon">🏥</div>
+            <div>
+              <div class="about-feat-text">Ex-Registrar</div>
+              <div class="about-feat-sub">Government Dental College, Srinagar</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dr. Shabaz — RCT Specialist -->
+    <div class="about-grid about-block reveal" style="margin-top:96px;">
+      <div class="about-img-wrap">
+        <img
+          src="team-dr-shabaz.jpg"
+          alt="Dr. Shabaz — Root Canal (RCT) Specialist"
+          class="about-img-main"
+          loading="lazy"
+          width="480" height="640"
+        />
+        <div class="about-cert-card">
+          <div class="about-cert-num">6+</div>
+          <div class="about-cert-label">Years of<br>Experience</div>
+        </div>
+        <div class="about-qual-chip">BDS</div>
+      </div>
+
+      <div class="about-content">
+        <span class="section-label">Root Canal (RCT) Specialist</span>
+        <h2 class="section-title" style="font-size:clamp(1.9rem, 3.8vw, 2.7rem);">
+          Dr. Shabaz
+        </h2>
+        <p class="section-desc">
+          Dr. Shabaz specializes in root canal treatment, using modern rotary systems to save natural teeth through precise, comfortable, and efficient endodontic care.
+        </p>
+
+        <div class="about-features">
+          <div class="about-feat">
+            <div class="about-feat-icon">🎓</div>
+            <div>
+              <div class="about-feat-text">BDS</div>
+              <div class="about-feat-sub">Root Canal (RCT) Specialist</div>
+            </div>
+          </div>
+          <div class="about-feat">
+            <div class="about-feat-icon">⏳</div>
+            <div>
+              <div class="about-feat-text">6 Years</div>
+              <div class="about-feat-sub">of Experience</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dr. Iram — General Dentist -->
+    <div class="about-grid about-block about-grid-reverse reveal" style="margin-top:96px;">
+      <div class="about-img-wrap">
+        <img
+          src="team-female-doctor.jpg"
+          alt="Dr. Iram — General Dentist"
+          class="about-img-main"
+          loading="lazy"
+          width="480" height="640"
+        />
+        <div class="about-qual-chip">BDS</div>
+      </div>
+
+      <div class="about-content">
+        <span class="section-label">General Dentist</span>
+        <h2 class="section-title" style="font-size:clamp(1.9rem, 3.8vw, 2.7rem);">
+          Dr. Iram
+        </h2>
+        <p class="section-desc">
+          Dr. Iram is dedicated to preventive and general dental care — routine check-ups, cleanings, fillings, and everyday oral health — helping patients maintain healthy smiles for life.
+        </p>
+
+        <div class="about-features">
+          <div class="about-feat">
+            <div class="about-feat-icon">🎓</div>
+            <div>
+              <div class="about-feat-text">BDS</div>
+              <div class="about-feat-sub">General Dentist</div>
+            </div>
+          </div>
+          <div class="about-feat">
+            <div class="about-feat-icon">🛡️</div>
+            <div>
+              <div class="about-feat-text">Preventive Care</div>
+              <div class="about-feat-sub">General &amp; Family Dentistry</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1379,81 +1499,6 @@
           <a href="#appointment" class="service-link">Book Now →</a>
         </div>
       </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== TEAM ===== -->
-<section id="team" class="section" aria-label="Meet Our Team">
-  <div class="container">
-    <div class="text-center reveal">
-      <span class="section-label">Our Team</span>
-      <h2 class="section-title">Meet Our Dental<br>Specialists</h2>
-      <p class="section-desc">
-        A trusted team of specialists working alongside Dr. Nasir to give you complete, well-rounded dental care.
-      </p>
-    </div>
-
-    <div class="team-grid">
-
-      <!-- Dr. Samah -->
-      <div class="team-card reveal">
-        <div class="team-img-wrap">
-          <img
-            src="team-female-doctor.jpg"
-            alt="Dr. Samah — Oral & Maxillofacial Surgeon"
-            loading="lazy"
-            width="480"
-            height="600"
-          />
-        </div>
-
-        <div class="team-body">
-          <div class="team-name">Dr. Samah</div>
-          <div class="team-qual">BDS, MDS</div>
-          <div class="team-specialty">Oral &amp; Maxillofacial Surgeon</div>
-          <div class="team-exp">11 Years Experience</div>
-        </div>
-      </div>
-
-      <!-- Dr. Shabaz -->
-      <div class="team-card reveal reveal-delay-1">
-        <div class="team-img-wrap">
-          <img
-            src="team-dr-shabaz.jpg"
-            alt="Dr. Shabaz — RCT Specialist"
-            loading="lazy"
-            width="480"
-            height="600"
-          />
-        </div>
-
-        <div class="team-body">
-          <div class="team-name">Dr. Shabaz</div>
-          <div class="team-qual">BDS</div>
-          <div class="team-specialty">RCT Specialist</div>
-        </div>
-      </div>
-
-      <!-- Dr. Iram -->
-      <div class="team-card reveal reveal-delay-2">
-        <div class="team-img-wrap">
-          <img
-            src="team-female-doctor.jpg"
-            alt="Dr. Iram — General Dentist"
-            loading="lazy"
-            width="480"
-            height="600"
-          />
-        </div>
-
-        <div class="team-body">
-          <div class="team-name">Dr. Iram</div>
-          <div class="team-qual">BDS</div>
-          <div class="team-specialty">General Dentist</div>
-        </div>
-      </div>
 
     </div>
   </div>
@@ -1984,7 +2029,6 @@
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About Doctor</a></li>
           <li><a href="#services">Our Services</a></li>
-          <li><a href="#team">Our Team</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#before-after">Before &amp; After</a></li>
           <li><a href="#testimonials">Video Stories</a></li>
@@ -2179,64 +2223,6 @@
     });
   }
 </script>
-
-<!--
-=======================================================
-  IMAGE LIST — Replace placeholders with real photos
-=======================================================
-
-HERO SECTION
-  hero-dentist.jpg           1200 × 1500   Hero — Dr. Nasir full-length portrait (professional, white coat)
-  patient-avatar-1.jpg       120 × 120     Hero floating card — Patient avatar (round, smiling)
-  patient-avatar-2.jpg       120 × 120     Hero floating card — Patient avatar
-  patient-avatar-3.jpg       120 × 120     Hero floating card — Patient avatar
-
-ABOUT SECTION
-  doctor-portrait.jpg        800 × 1067    About — Dr. Nasir formal portrait
-
-SERVICES SECTION
-  service-braces.jpg              800 × 450   Braces (patient with braces, close-up)
-  service-clear-aligners.jpg      800 × 450   Clear Aligners (aligner tray in hand or in mouth)
-  service-smile-correction.jpg    800 × 450   Smile Correction before/after or procedure
-  service-orthodontic-treatment.jpg 800 × 450 Orthodontic Treatment — bite/jaw assessment
-  service-retainers.jpg           800 × 450   Retainers on display or being fitted
-  service-consultation.jpg        800 × 450   Consultation — doctor reviewing digital scan with patient
-
-TEAM SECTION
-  Dr. Samah  — uses an inline SVG hijab avatar (no image file needed)
-  team-dr-shabaz.jpg   480 × 600   Dr. Shabaz — doctor photo (RCT Specialist)
-  Dr. Iram   — uses an inline SVG hijab avatar (no image file needed)
-
-GALLERY SECTION
-  gallery-clinic-reception.jpg  1200 × 800   Clinic reception area — warm, modern
-  gallery-treatment-room.jpg    1200 × 1000  Fully-equipped orthodontic treatment room
-  gallery-xray-room.jpg         1200 × 700   Digital X-ray / intraoral scanning equipment in use
-  gallery-doctor-treating.jpg   1200 × 1100  Dr. Nasir treating a patient
-  gallery-kids-area.jpg         1200 × 800   Teen/kid-friendly waiting or treatment area
-  gallery-smile-result.jpg      1200 × 960   Aligned smile result
-
-BEFORE & AFTER SECTION
-  before-after-1-before.jpg / before-after-1-after.jpg   600 × 750 each   Braces case
-  before-after-2-before.jpg / before-after-2-after.jpg   600 × 750 each   Clear aligner case
-  before-after-3-before.jpg / before-after-3-after.jpg   600 × 750 each   Bite correction case
-
-VIDEO TESTIMONIALS SECTION
-  video-testi-1.jpg   640 × 840   Video thumbnail — Aamir (Braces patient)
-  video-testi-2.jpg   640 × 840   Video thumbnail — Insha (Clear Aligner patient)
-  video-testi-3.jpg   640 × 840   Video thumbnail — Bilal (Smile Correction patient)
-  video-testi-4.jpg   640 × 840   Video thumbnail — Rukhsana (Parent of teen patient)
-
-  NOTE: Each video-card <a href="#"> currently points to "#" — replace with the
-  real YouTube / Instagram Reel / hosted video URL for each patient testimonial.
-
-=======================================================
-  NOTE: All images should be placed in the same folder
-  as this HTML file. Use royalty-free sources like
-  Unsplash.com, Pexels.com, or Freepik.com for stock photos,
-  and use the clinic's own real photos for gallery,
-  before/after, and video testimonial sections wherever possible.
-=======================================================
--->
 
 </body>
 </html>
