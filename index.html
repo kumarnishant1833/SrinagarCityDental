@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Srinagar City Dental Center | Dr. Nasir ul Sadiq — BDS, MDS (Orthodontics)</title>
-  <meta name="description" content="Srinagar City Dental Center — Premium orthodontic care by Dr. Nasir (BDS, MDS Orthodontics). Expert in braces, clear aligners, smile correction & retainers. Located on Dal Lake Road, Srinagar." />
+  <title>Srinagar City Dental Center | Dr. Nasir — BDS, MDS (Orthodontics)</title>
+  <meta name="description" content="Srinagar City Dental Center — Premium orthodontic care by Dr. Nasir (BDS, MDS Orthodontics). Expert in braces, clear aligners, smile correction & retainers. Located at Central Mall, Balgarden Road, Karan Nagar, Srinagar." />
   <meta name="keywords" content="orthodontist srinagar, braces srinagar, clear aligners srinagar, dental clinic srinagar, smile correction srinagar, dr nasir orthodontist, retainers srinagar, dal lake road dental clinic" />
   <meta name="author" content="Dr. Nasir" />
   <meta property="og:title" content="Srinagar City Dental Center | Expert Orthodontic Care" />
@@ -25,10 +25,10 @@
     "telephone": "+917780812225",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Dal Lake Road",
+      "streetAddress": "Central Mall, 3rd Floor, Near SMC Office, Balgarden Road, Karan Nagar",
       "addressLocality": "Srinagar",
       "addressRegion": "Jammu and Kashmir",
-      "postalCode": "190001",
+      "postalCode": "190010",
       "addressCountry": "IN"
     },
     "openingHours": ["Mo-Sa 10:00-14:00", "Mo-Sa 17:00-20:00", "Su 10:00-14:00"],
@@ -486,6 +486,85 @@
       .about-grid-reverse .about-img-wrap { order: 0; }
       .about-grid-reverse .about-content { order: 0; }
     }
+
+    /* ===== CLINIC TOUR VIDEO ===== */
+#clinic-tour {
+  background: var(--clr-bg2);
+}
+
+.video-showcase-wrap {
+  max-width: 320px;          /* Reduced from 380px */
+  margin: 56px auto 0;
+}
+
+.video-showcase {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background: var(--clr-dark);
+}
+
+.video-showcase-el {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;       /* Prevents cropping and preserves quality */
+  display: block;
+  background: #000;
+}
+
+.video-showcase-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.video-showcase-play svg {
+  width: 22px;
+  height: 22px;
+  margin-left: 3px;
+}
+
+.video-showcase.playing .video-showcase-play {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.85);
+}
+
+.video-showcase-note {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 0.82rem;
+  color: var(--clr-text-muted);
+}
+
+@media (max-width: 768px) {
+  .video-showcase-wrap {
+    max-width: 280px;      /* Smaller on mobile */
+  }
+
+  .video-showcase-play {
+    width: 52px;
+    height: 52px;
+  }
+
+  .video-showcase-play svg {
+    width: 18px;
+    height: 18px;
+  }
+}
 
     /* ===== SERVICES ===== */
     #services { background: var(--clr-bg); }
@@ -1017,7 +1096,7 @@
       </div>
       <div class="nav-logo-text">
         <div class="nav-logo-name">Srinagar City Dental</div>
-        <div class="nav-logo-sub">Your Perfect Smile Starts Here</div>
+        <div class="nav-logo-sub">Orthodontic Center</div>
       </div>
     </a>
 
@@ -1026,6 +1105,7 @@
       <li role="none"><a href="#about" role="menuitem">About</a></li>
       <li role="none"><a href="#services" role="menuitem">Services</a></li>
       <li role="none"><a href="#gallery" role="menuitem">Gallery</a></li>
+      <li role="none"><a href="#clinic-tour" role="menuitem">Clinic Tour</a></li>
       <li role="none"><a href="#before-after" role="menuitem">Before &amp; After</a></li>
       <li role="none"><a href="#testimonials" role="menuitem">Video Stories</a></li>
       <li role="none"><a href="#why" role="menuitem">Why Us</a></li>
@@ -1050,6 +1130,7 @@
   <a href="#about" role="menuitem">👩‍⚕️ About</a>
   <a href="#services" role="menuitem">🦷 Services</a>
   <a href="#gallery" role="menuitem">🖼️ Gallery</a>
+  <a href="#clinic-tour" role="menuitem">🎥 Clinic Tour</a>
   <a href="#before-after" role="menuitem">↔️ Before &amp; After</a>
   <a href="#testimonials" role="menuitem">🎬 Video Stories</a>
   <a href="#why" role="menuitem">⭐ Why Us</a>
@@ -1071,7 +1152,7 @@
           Complete Dental Care with <em>Advanced Orthodontic Expertise</em>
         </h1>
         <p class="hero-desc">
-          From routine check-ups, root canals and implants to teeth whitening and kids' dentistry — Srinagar City Dental Center is your family's complete dental home. Led by Dr. Nasir, BDS, MDS (Orthodontics), and supported by a team of experienced specialists, we're proudly serving Srinagar on Dal Lake Road.
+          From routine check-ups, root canals and implants to teeth whitening and kids' dentistry — Srinagar City Dental Center is your family's complete dental home. Led by Dr. Nasir, BDS, MDS (Orthodontics), and supported by a team of experienced specialists, we're proudly serving Srinagar from Karan Nagar.
         </p>
 
         <div class="trust-badges" role="list" aria-label="Recognitions and credentials">
@@ -1272,7 +1353,7 @@
       <div class="about-content">
         <span class="section-label">Oral &amp; Maxillofacial Surgeon</span>
         <h2 class="section-title" style="font-size:clamp(1.9rem, 3.8vw, 2.7rem);">
-          Dr. Samah Bashir 
+          Dr. Samah
         </h2>
         <p class="section-desc">
           Dr. Samah brings specialist surgical expertise in oral and maxillofacial care, handling complex extractions, jaw-related procedures, and surgical dental needs with precision and care.
@@ -1297,7 +1378,7 @@
       </div>
     </div>
 
-    <!-- Dr. Shahbaz  — RCT Specialist -->
+    <!-- Dr. Shabaz — RCT Specialist -->
     <div class="about-grid about-block reveal" style="margin-top:96px;">
       <div class="about-img-wrap">
         <img
@@ -1317,10 +1398,10 @@
       <div class="about-content">
         <span class="section-label">Root Canal (RCT) Specialist</span>
         <h2 class="section-title" style="font-size:clamp(1.9rem, 3.8vw, 2.7rem);">
-          Dr. Shahbaz 
+          Dr. Shabaz
         </h2>
         <p class="section-desc">
-          Dr. Shahbaz  specializes in root canal treatment, using modern rotary systems to save natural teeth through precise, comfortable, and efficient endodontic care.
+          Dr. Shabaz specializes in root canal treatment, using modern rotary systems to save natural teeth through precise, comfortable, and efficient endodontic care.
         </p>
 
         <div class="about-features">
@@ -1358,7 +1439,7 @@
       <div class="about-content">
         <span class="section-label">General Dentist</span>
         <h2 class="section-title" style="font-size:clamp(1.9rem, 3.8vw, 2.7rem);">
-          Dr. Iram Ayoub
+          Dr. Iram
         </h2>
         <p class="section-desc">
           Dr. Iram is dedicated to preventive and general dental care — routine check-ups, cleanings, fillings, and everyday oral health — helping patients maintain healthy smiles for life.
@@ -1522,6 +1603,10 @@
         <img src="gallery-treatment-room.jpg" alt="Orthodontic treatment room" loading="lazy" width="600" height="500" />
         <div class="gallery-overlay"><span class="gallery-caption">Treatment Room</span></div>
       </div>
+      <div class="gallery-item reveal reveal-delay-2">
+        <img src="gallery-xray-room.jpg" alt="Digital scanning and X-ray room" loading="lazy" width="600" height="350" />
+        <div class="gallery-overlay"><span class="gallery-caption">Digital Scanning &amp; X-Ray Room</span></div>
+      </div>
       <div class="gallery-item reveal">
         <img src="gallery-doctor-treating.jpg" alt="Dr. Nasir treating a patient" loading="lazy" width="600" height="550" />
         <div class="gallery-overlay"><span class="gallery-caption">Dr. Nasir at Work</span></div>
@@ -1530,6 +1615,39 @@
         <img src="gallery-smile-result.jpg" alt="Aligned smile result" loading="lazy" width="600" height="480" />
         <div class="gallery-overlay"><span class="gallery-caption">Aligned Smile Result</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLINIC TOUR VIDEO ===== -->
+<section id="clinic-tour" class="section" aria-label="Clinic Tour Video">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label">See It For Yourself</span>
+      <h2 class="section-title">Take a Tour of<br>Our Clinic</h2>
+      <p class="section-desc">Step inside Srinagar City Dental Center and get a feel for the calm, modern space where your treatment journey begins.</p>
+    </div>
+
+    <div class="video-showcase-wrap reveal">
+      <div class="video-showcase" id="clinicTourShowcase">
+        <!-- Placeholder video — replace "clinic-tour.mp4" and "clinic-tour-poster.jpg" with the real files later -->
+        <video
+          class="video-showcase-el"
+          id="clinicTourVideo"
+          controls
+          playsinline
+          preload="metadata"
+          poster="clinic-tour-poster.jpg">
+          <source src="clinic-tour.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-showcase-play" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 4.5v15l14-7.5-14-7.5Z" fill="#163a63"/>
+          </svg>
+        </div>
+      </div>
+      <p class="video-showcase-note">Clinic tour &amp; inauguration video — coming soon.</p>
     </div>
   </div>
 </section>
@@ -1859,7 +1977,8 @@
 
         <div style="margin-top:28px;" class="reveal">
           <p style="font-size:0.85rem; color:rgba(255,255,255,0.5); line-height:1.7;">
-            📍 3rd Floor, Central Mall, Karan Nagar Rd, Karan Nagar, Srinagar, Jammu & Kashmir 190010
+            📍 Central Mall, 3rd Floor, Near SMC Office<br>
+            Balgarden Road, Karan Nagar, Srinagar - 190010
           </p>
           <a href="tel:+917780812225" style="color:var(--clr-accent2); font-weight:600; display:block; margin-top:10px; font-size:1rem;">
             📞 +91 77808 12225
@@ -1922,7 +2041,7 @@
     <div class="text-center reveal" style="margin-bottom:56px;">
       <span class="section-label">Contact Us</span>
       <h2 class="section-title">Find Us &amp; Get in Touch</h2>
-      <p class="section-desc">We're conveniently located on Dal Lake Road, Srinagar. Walk-ins welcome during clinic hours.</p>
+      <p class="section-desc">We're conveniently located in Karan Nagar, Srinagar. Walk-ins welcome during clinic hours.</p>
     </div>
 
     <div class="contact-grid">
@@ -1932,7 +2051,7 @@
             <div class="contact-card-icon">📍</div>
             <div>
               <div class="contact-card-label">Address</div>
-              <div class="contact-card-val">3rd Floor, Central Mall, Karan Nagar Rd, Karan Nagar, Srinagar, Jammu & Kashmir 190010</div>
+              <div class="contact-card-val">Central Mall, 3rd Floor, Near SMC Office<br>Balgarden Road, Karan Nagar, Srinagar - 190010</div>
             </div>
           </div>
           <div class="contact-card reveal">
@@ -1970,7 +2089,7 @@
 
         <div class="text-center reveal">
           <p class="section-desc">
-            3rd Floor, Central Mall, Karan Nagar Road, Srinagar, Jammu & Kashmir 190010
+            Central Mall, 3rd Floor, Near SMC Office, Balgarden Road, Karan Nagar, Srinagar - 190010
           </p>
         </div>
 
@@ -1978,7 +2097,7 @@
           <div class="map-wrap" role="region" aria-label="Clinic location map">
 
             <iframe
-              src="https://www.google.com/maps?q=3rd+Floor,+Central+Mall,+Karan+Nagar+Road,+Karan+Nagar,+Srinagar,+Jammu+and+Kashmir+190010&output=embed"
+              src="https://www.google.com/maps?q=Central+Mall,+3rd+Floor,+Near+SMC+Office,+Balgarden+Road,+Karan+Nagar,+Srinagar+190010&output=embed"
               width="100%"
               height="450"
               style="border:0;border-radius:18px;"
@@ -2009,7 +2128,7 @@
     <div class="footer-main">
       <div class="footer-brand">
         <div class="footer-logo-name">Srinagar City Dental Center</div>
-        <div style="font-size:0.78rem; color:var(--clr-primary-light);">Dr. Nasir ul Sadiq — BDS, MDS (Orthodontics)</div>
+        <div style="font-size:0.78rem; color:var(--clr-primary-light);">Dr. Nasir — BDS, MDS (Orthodontics)</div>
         <p class="footer-tagline">Your smile alignment is our specialty. Precise orthodontic care with a gentle touch — serving Srinagar with pride.</p>
         <div class="footer-social">
           <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
@@ -2026,6 +2145,7 @@
           <li><a href="#about">About Doctor</a></li>
           <li><a href="#services">Our Services</a></li>
           <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#clinic-tour">Clinic Tour</a></li>
           <li><a href="#before-after">Before &amp; After</a></li>
           <li><a href="#testimonials">Video Stories</a></li>
           <li><a href="#why">Why Choose Us</a></li>
@@ -2050,7 +2170,7 @@
         <div class="footer-heading">Contact Info</div>
         <ul class="footer-links" style="gap:14px;">
           <li style="color:rgba(255,255,255,0.5); font-size:0.85rem; line-height:1.6;">
-            📍 Dal Lake Road, Srinagar, J&amp;K 190001
+            📍 Central Mall, Balgarden Road<br>Karan Nagar, Srinagar - 190010
           </li>
           <li><a href="tel:+917780812225" style="color:rgba(255,255,255,0.55);">📞 +91 77808 12225</a></li>
           <li style="color:rgba(255,255,255,0.5); font-size:0.82rem;">
@@ -2211,6 +2331,15 @@
   }, { threshold: 0.4 });
 
   document.querySelectorAll('section[id]').forEach(s => activeObserver.observe(s));
+
+  /* ----- CLINIC TOUR VIDEO PLAY OVERLAY ----- */
+  const clinicTourVideo = document.getElementById('clinicTourVideo');
+  const clinicTourShowcase = document.getElementById('clinicTourShowcase');
+  if (clinicTourVideo && clinicTourShowcase) {
+    clinicTourVideo.addEventListener('play', () => clinicTourShowcase.classList.add('playing'));
+    clinicTourVideo.addEventListener('pause', () => clinicTourShowcase.classList.remove('playing'));
+    clinicTourVideo.addEventListener('ended', () => clinicTourShowcase.classList.remove('playing'));
+  }
 
   /* ----- LAZY LOAD IMAGES (additional support) ----- */
   if ('loading' in HTMLImageElement.prototype === false) {
