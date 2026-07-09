@@ -1,0 +1,7 @@
+# robots.txt for Srinagar City Dental Center
+# https://srinagarcitydental.com
+
+User-agent: *
+Allow: /
+
+Sitemap: https://srinagarcitydental.com/sitemap.xml
