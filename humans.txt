@@ -1,0 +1,26 @@
+/* TEAM */
+Developer: Prateek
+Site: https://prateek1833.github.io/
+
+/* SITE */
+Site Name: Srinagar City Dental Center
+Site Owner: Dr. Nasir, BDS, MDS (Orthodontics)
+Site URL: https://srinagarcitydental.com
+Location: Central Mall, 3rd Floor, Near SMC Office, Balgarden Road, Karan Nagar, Srinagar - 190010
+Last Update: 2026/07/09
+Language: English
+Doctype: HTML5
+IDE: Visual Studio Code
+
+/* TECHNOLOGY COLOPHON */
+HTML5, CSS3, Vanilla JavaScript
+Font Awesome (icons)
+Google Fonts: Cormorant Garamond, Syne, DM Sans
+Google Maps Embed API
+Hosted on GitHub Pages
+
+/* THANKS */
+Thanks to the entire team at Srinagar City Dental Center —
+Dr. Nasir, Dr. Samah Bashir, Dr. Shahbaz, and Dr. Iram Ayoub —
+for their trust in bringing this project to life, and to every
+patient whose story and smile made this site possible.
